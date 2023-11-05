@@ -1,0 +1,66 @@
+﻿@model final_project.Models.result;
+@{
+    Layout = "_Layout3";
+}
+<div class="container">
+    <!-- start question header  -->
+    <div class="categoryheader mt-3 d-flex align-items-center">
+        <div class="icon">
+            <i class="fa-solid fa-trash-can"></i>
+        </div>
+        <div class="categoryname">
+            <h2>Waste</h2>
+            <div class="prog">
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- end question header  -->
+    <div class="foodcontainer row gx-0 gy-0 align-items-center">
+        <div class="col text-center col-xs-12 col-lg-6">
+            <form method="post" asp-action="saveWaste">
+                <div class="mb-2 fw-bold fs-3">
+                    How many garbage bags do you produce per week:
+                </div>
+                <div class="box">
+                    <label for="">
+                        Garbage <i class="fa-solid fa-trash-can"></i>
+                    </label>
+
+                    <select asp-for="value" class="form-select"
+                            aria-label="Default select example"
+                            id="select">
+                        <option selected>1 - 5</option>
+                        <option value=1>1</option>
+                        <option value=2>2</option>
+                        <option value=3>3</option>
+                        <option value=4>4</option>
+                        <option value=5>5</option>
+                    </select>
+                </div>
+
+                <button name="submit" id="submit" class="btn next btn-success">
+                    Submit <i class="fa-solid fa-angles-right"></i>
+                </button>
+            </form>
+        </div>
+        <div class="col-xs-12 col-lg-6">
+            <div class="information row gx-0 gy-0 mt-3 align-items-center">
+                <div class="image col-xs-12 col-sm-6">
+                    <img src="~/images/can.png" alt="" />
+                </div>
+                <div class="text col-xs-12 col-sm-6">
+                    Our Wasteful Impact on Climate Change Solid waste contributes
+                    directly to greenhouse gas emissions through the generation of
+                    methane from the anaerobic decay of waste in landfills, and the
+                    emission of nitrous oxide from our solid waste combustion
+                    facilities.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js1/all.min.js"></script>
+<script src="~/js1/bootstrap.bundle.min.js"></script>
+

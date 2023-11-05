@@ -1,0 +1,43 @@
+﻿@{
+    Layout = "_Layout3";
+}
+<div class="container">
+    <!-- start question header  -->
+    <div class="categoryheader mt-3 d-flex align-items-center">
+        <div class="icon">
+            <i class="fa-solid fa-trash-can"></i>
+        </div>
+        <div class="categoryname">
+            <h2>Governorate Detail</h2>
+            <div class="prog">
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- end question header  -->
+    <div class="foodcontainer row gx-0 gy-0 align-items-center">
+        <div class="col text-center col-xs-12 col-lg-6">
+            <table>
+                @foreach (var itm in ViewData["Governorate_co2s"] as Dictionary<string, double>)
+                {
+                    <tr>
+                        <td>@itm.Key</td>
+                        <td>@itm.Value</td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="col-xs-12 col-lg-6">
+            <div class="information row gx-0 gy-0 mt-3 align-items-center">
+                <div class="image col-xs-12 col-sm-6">
+                    <img src="~/images/can.png" alt="" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js1/all.min.js"></script>
+<script src="~/js1/bootstrap.bundle.min.js"></script>
+

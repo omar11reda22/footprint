@@ -1,0 +1,159 @@
+﻿@model final_project.viewmodel.Registerviewmodel;
+@{
+    Layout = "_Layout2";
+    //SelectList countrylist = new SelectList(ViewBag.country, "country_ID", "name");
+    //SelectList governoratelist = new SelectList(ViewBag.governorate, "governorate_ID", "name");
+    //SelectList citylist = new SelectList(ViewBag.city, "city_ID", "name");
+
+}
+
+<div class="login">
+    <div class="image">
+        <img src="~/images/1.jpg" alt="" />
+    </div>
+    <form method="post" asp-action="saveregister" asp-controller="Login">
+
+        <h3>Welcome In Your Place To Clculate Your Carbon Footbrint</h3>
+        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+        @*   <input type="text" placeholder="first name" />
+        <input type="text" placeholder="last name" />*@
+        <input name="Email" id="Email" onclick="messageLabelClick()" type="email" placeholder="Email" />
+        <span class="text-danger"></span>
+        <input name="password" id="password" onclick="messageLabelClick()" type="password" placeholder="password" />
+        <span class="text-danger"></span>
+        <input name="confirmpassword" id="confirmpassword" onclick="messageLabelClick()" type="password" placeholder="password confirmation" />
+        <span class="text-danger"></span>
+        <label id="messageLabel" style="visibility:hidden; color:red;"></label>
+        <div class=" custom-select" style="width:100px;">
+            <label> countries </label>
+            <select id="lstCountry" name="lstCountry" asp-for="lstCountry" asp-items="Model.countries" style="width:200px;">
+                <option value="" selected="selected">-- select country --</option>
+            </select><br />
+
+            <span class="text-danger"></span>
+            <label>governorates</label>
+
+            <select id="lstGovernorat" name="lstGovernorat" asp-for="lstGovernorat" asp-items="Model.governorates" style="width:200px;">
+                <option value="" selected="selected">-- select Governoraties --</option>
+            </select><br />
+
+            <span class="text-danger"></span>
+            <label>cities</label>
+            <select id="lstCity" name="lstCity" asp-for="lstCity" asp-items="Model.cities" style="width:200px;">
+                <option value="" selected="selected">-- select cities --</option>
+
+            </select>
+        </div>
+        <br />
+        <button type="submit" onclick="return Validate()">Sign Up</button>
+        <p>Already have an accound? <a asp-action="Index" asp-controller="Login">log in</a></p>
+    </form>
+</div>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script type="text/javascript">
+
+        function Validate() {
+
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirmpassword").value;
+            var Email = document.getElementById("Email").value;
+
+            if (!filterEmail(Email)) {
+                document.getElementById("messageLabel").textContent = "Please enter valid email, Try again !";
+                document.getElementById("messageLabel").style.visibility = 'visible';
+                return false;
+            }
+
+            if (password != confirmPassword) {
+                document.getElementById("messageLabel").textContent = "Confirm  Password doesn't match, Try again !";
+                document.getElementById("messageLabel").style.visibility = 'visible';
+                return false;
+            }
+
+            return true;
+        }
+
+        function filterEmail(email) {
+            var regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            return regex.test(email);
+        }
+
+        function messageLabelClick() {
+            document.getElementById("messageLabel").style.visibility = 'hidden';
+        }
+
+        $("#lstCountry").change(function () {
+
+            var selectedCountry = $("#lstCountry").val();
+            var governoratSelect = $("#lstGovernorat");
+
+            governoratSelect.empty();
+
+            var citySelect = $("#lstCity");
+            citySelect.empty();
+
+            citySelect.append($('<option/>', {
+                value: null,
+                text: "-- select cities --"
+            }));
+
+            if (selectedCountry == null || selectedCountry == '') {
+                governoratSelect.append($('<option/>', {
+                    value: null,
+                    text: "-- select Governorat --"
+                }));
+            }
+            if (selectedCountry != null && selectedCountry != '') {
+                $.getJSON('@Url.Action("GetGovernorat")', { CountryCode: selectedCountry }, function (Governoraties) {
+                    if (Governoraties != null && !jQuery.isEmptyObject(Governoraties)) {
+                        governoratSelect.append($('<option/>', {
+                            value: "",
+                            text: "-- select Governorat --"
+                        }));
+                        $.each(Governoraties, function (index, Governorat) {
+                            governoratSelect.append($('<option/>', {
+                                value: Governorat.value,
+                                text: Governorat.text
+                            }));
+                        });
+                    };
+                });
+            }
+        });
+
+        $("#lstGovernorat").change(function () {
+            var GovernoratSelect = $("#lstGovernorat").val();
+            var selectedCity = $("#lstCity");
+
+            selectedCity.empty();
+
+            if (GovernoratSelect == null || GovernoratSelect == '') {
+                selectedCity.append($('<option/>', {
+                    value: null,
+                    text: "-- select cities --"
+                }));
+            }
+            if (GovernoratSelect != null && GovernoratSelect != '') {
+                $.getJSON('@Url.Action("GetCities")', { GovernoratCode: GovernoratSelect }, function (Cities) {
+                    if (Cities != null && !jQuery.isEmptyObject(Cities)) {
+                        selectedCity.append($('<option/>', {
+                            value: null,
+                            text: "-- select cities --"
+                        }));
+                        $.each(Cities, function (index, City) {
+                            selectedCity.append($('<option/>', {
+                                value: City.value,
+                                text: City.text
+                            }));
+                        });
+                    };
+                });
+            }
+        });
+    </script>
+         }

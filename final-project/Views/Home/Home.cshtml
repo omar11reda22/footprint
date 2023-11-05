@@ -1,0 +1,70 @@
+﻿@model final_project.Models.result;
+@{
+    Layout = "_Layout3";
+}
+
+<!-- start header  -->
+<!-- end header  -->
+<div class="container">
+    <!-- start question header  -->
+    <div class="categoryheader d-flex align-items-center mt-3">
+        <div class="icon">
+            <i class="fa-solid fa-house-chimney"></i>
+        </div>
+        <div class="categoryname">
+            <h2>HOME</h2>
+            <div class="prog">
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- end question header  -->
+    <div class="foodcontainer row gx-0 gy-0 align-items-center">
+        <div class="col text-center col-xs-12 col-lg-6">
+            <form method="post" asp-action="savingdata">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="mb-2 fw-bold fs-3">
+                    How many Kwh of electricity do you consume per month:
+                </div>
+                <div>
+                    <label for="">
+                        Kwh / <i class="fa-solid fa-house-chimney"></i>
+                    </label>
+                    <input asp-for="value" type="number" placeholder="Kwh" />
+
+                </div>
+
+                <button type="submit" name="submit" class="btn next btn-success">
+                    Submit <i class="fa-solid fa-angles-right"></i>
+                </button>
+
+
+            </form>
+        </div>
+        <div class="col-xs-12 col-lg-6">
+            <div class="information row gx-0 gy-0 mt-3 align-items-center">
+                <div class="image col-xs-12 col-sm-6">
+                    <img src="~/images/Home.jpg" alt="" />
+                </div>
+                <div class="text col-xs-12 col-sm-6">
+                    Your home energy use and waste production. This includes factors
+                    like how much electricity, natural gas, and other fuels you use
+                    and where thev're sourced from, as well as whether you recycle or
+                    send your waste to landfill/incineration.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="~/js1/all.min.js"></script>
+    <script src="~/js1/bootstrap.bundle.min.js"></script>
+}

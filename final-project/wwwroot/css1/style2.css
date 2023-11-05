@@ -1,0 +1,206 @@
+/* start general style  */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  --frist-color: #21ff7681;
+  --second-color: #46cc79c9;
+  --shadow-color: #26553817;
+  --font-color: rgb(20, 20, 20);
+}
+body {
+  font-family: "Open Sans", sans-serif;
+  color: rgb(49, 49, 49);
+  background-color: #fff;
+}
+
+a {
+  text-decoration: none;
+  color: var(--frist-color);
+}
+
+/* end general style  */
+/*----header---*/
+#header {
+  background: rgba(30, 44, 37, 0.788);
+  transition: all 0.5s;
+  z-index: 997;
+  min-height: 70px;
+  top: 0px;
+}
+#header .navbar-brand {
+  margin: 0;
+}
+#header .navbar-brand a {
+  font-size: 25px;
+  color: white;
+  letter-spacing: 2px;
+}
+#header .navbar-brand img {
+  width: 40px;
+  height: 40px;
+}
+
+#header .navbar {
+  width: 100%;
+  background-color: transparent;
+}
+#header .navbar button:focus {
+  box-shadow: none;
+}
+
+#header .navbar ul li.active a,
+#header .navbar ul li:hover a {
+  color: white;
+}
+#header .navbar ul li {
+  position: relative;
+  margin-left: 10px;
+}
+#header .navbar ul li.dropdown ul {
+  background-color: rgba(30, 44, 37, 0.788);
+  padding: 5px 10px;
+  margin: 5px 0;
+}
+#header .navbar ul li.dropdown ul li:hover a {
+  background-color: #44815c;
+}
+#header .navbar ul li.dropdown ul li a {
+  color: white;
+  padding: 5px;
+}
+#header .navbar ul li a {
+  font-size: 18px;
+}
+#header .navbar ul li span {
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 0;
+  background-color: #40e984;
+  transition: 0.3s;
+}
+#header .navbar ul li.active span,
+#header .navbar ul li:hover span {
+  width: 100%;
+}
+
+/* ----- end navbar ------*/
+
+/* start question header  */
+.categoryheader .icon svg {
+  font-size: 50px;
+  color: #278b49;
+  margin-right: 20px;
+}
+.categoryheader .categoryname .prog {
+  background-color: rgb(76, 219, 124);
+  width: 300px;
+  height: 20px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.categoryheader .categoryname .prog span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #278b49;
+}
+.categoryheader .categoryname h2{
+  font-weight: bold;
+}
+/* end question header  */
+
+.foodcontainer {
+  padding: 50px 0;
+  overflow-x: hidden;
+}
+@media (min-width: 767px) {
+  form {
+    padding: 0 50px;
+  }
+}
+form div:not(:first-of-type) {
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background-color: #ffff;
+  color: #313030;
+  margin: 10px;
+
+  box-shadow: 0 0 30px rgba(214, 216, 215, 0.685);
+  padding: 20px;
+  height: 80px;
+}
+form .dropdown-toggle {
+  font-weight: bold;
+  color: #fff;
+}
+form .dropdown-toggle:hover {
+  color: rgb(73, 163, 108);
+  background-color: #fff;
+}
+
+form label {
+  color: var(--font-color);
+  font-weight: bold;
+}
+#select {
+  width: 100px;
+}
+form input {
+  width: 50px;
+  height: 40px;
+  background-color: white;
+  color: black;
+  border: 1px solid #333;
+  border-radius: 5px;
+  text-align: center;
+}
+form input:focus {
+  outline: none;
+}
+form button {
+  border: none;
+  background-color: rgba(128, 128, 128, 0.507);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.information {
+  box-shadow: 0 0 30px rgba(214, 216, 215, 0.829);
+  border: 1px solid rgb(24, 37, 29);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  background: radial-gradient(
+    circle at -4% -12.9%,
+    rgb(61, 100, 85) 0.3%,
+    rgb(30, 59, 41) 90.2%
+  );
+}
+
+.information .image,
+.information .text {
+  height: 100%;
+}
+
+.information .image img {
+  width: 100%;
+  height: 100%;
+}
+
+.information .text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  line-height: 2;
+  padding: 20px;
+}

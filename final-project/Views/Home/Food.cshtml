@@ -1,0 +1,142 @@
+﻿@model final_project.Models.result;
+@{
+    Layout = "_Layout1";
+}
+
+
+<div class="container">
+    <!-- start question header  -->
+    <div class="categoryheader d-flex mt-3 mt align-items-center">
+        <div class="icon">
+            <i class="fa-solid fa-utensils"></i>
+        </div>
+
+       
+
+        <div class="categoryname">
+            <h2>Food</h2>
+            <div class="prog">
+                <span class="inner-prog"></span>
+            </div>
+        </div>
+    </div>
+    <!-- end question header  -->
+    <div class="foodcontainer row gx-0 gy-0 align-items-center">
+        <div class="formcont col text-center col-xs-12 col-lg-6">
+            <form method="post" asp-action="saveFood">
+                <h3 class="mb-2 fw-bold fs-3">
+                    Select how much you consume of each item per week:
+                </h3>
+                <div>
+                    <div>
+                        <label for="beef">Beef </label>
+                        <input asp-for="value" name="beef" type="number" class="beef" placeholder=" 1 Kg" />
+
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label for="cheese">Cheese </label>
+                        <input asp-for="value" name="cheese" type="number" placeholder=" 1 Kg" />
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label for="turkey">Turkey </label>
+                        <input asp-for="value" name="turkey" type="number" placeholder=" 1 Kg" />
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label for="chicken">Chicken </label>
+                        <input asp-for="value" name="chiken" type="number" placeholder=" 1 Kg" />
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label for="tuna">Tuna </label>
+                        <input asp-for="value" name="tuna" type="number" placeholder=" 1 Kg" />
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label for="eggs">Eggs </label>
+                        <input asp-for="value" name="eggs" type="number" placeholder="1 Count" />
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label for="potatoes">Potatoes </label>
+                        <input asp-for="value" name="potatoes" type="number" placeholder=" 1 Kg" />
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label for="rice">Rice </label>
+                        <input asp-for="value" name="rice" type="number" placeholder=" 1 Kg" />
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label for="beans">Beans </label>
+                        <input asp-for="value" name="beens" type="number" placeholder=" 1 Kg" />
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label for="Vegetables">Vegetables </label>
+                        <input asp-for="value" name="vegetabols" type="number" placeholder=" 1 Kg" />
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label for="milk">Milk </label>
+                        <input asp-for="value" name="milk" type="number" placeholder=" 1 L" />
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label for="fruit">Fruit </label>
+                        <input asp-for="value" name="fruit" type="number" placeholder=" 1 Kg" />
+                    </div>
+                </div>
+                <button name="submit" id="submit" class="btn btn-success">
+                    submit your answeres
+                </button>
+            </form>
+            <button name="previous" id="previous" class="btn prev btn-success">
+                <i class="fa-solid fa-angle-left"></i> Previous
+            </button>
+            &nbsp;
+            <button name="next" id="next" class="btn next btn-success">
+                Next <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+        <div class="col-xs-12 col-lg-6">
+            <div class="information row gx-0 gy-0 align-items-center">
+                <div class="image col-xs-12 col-sm-6">
+                    <img src="~/images/food.jpg" alt="" />
+                </div>
+                <div class="text col-xs-12 col-sm-6">
+                    Your diet. The types of food you eat and where you source it from
+                    can play a central role in your overall carbon footprint. The more
+                    energy-intensive it is to produce and ship your food, the worse
+                    for the environment it generally is.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="~/js1/all.min.js"></script>
+    <script src="~/js1/bootstrap.bundle.min.js"></script>
+    <script src="~/js1/food.js"></script>
+
+}

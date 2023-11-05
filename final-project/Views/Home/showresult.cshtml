@@ -1,0 +1,47 @@
+﻿@model IEnumerable<final_project.Models.Governorate>
+
+@{
+    ViewData["Title"] = "";
+}
+
+<h1>showresult</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table>
+    <thead>
+        <tr>
+            <th>Name </th>
+            <th>Total of CO2</th>
+        </tr>
+    </thead>
+  
+        <tbody>
+        <tr>
+            <td>@ViewData["showalexanderia"]</td>
+            <td>@ViewData["alexanderia"].ToString()</td>
+        </tr>
+        <tr>
+            <td>    @ViewData["showgharbeya"]</td>
+            <td> @ViewData["gharbeya"].ToString()</td>
+        </tr>
+        <tr>
+            <td>  @ViewData["showisnailia"]</td>
+                <td>    @ViewData["Ismailia"].ToString()</td>
+        </tr>
+        <tr>
+            <td>@ViewData["showdakahleia"]</td>
+                <td>@ViewData["dakahlia"].ToString()</td>
+        </tr>
+        <tr>
+            <td> @ViewData["showcairo"]</td>
+                <td> @ViewData["Cairo"].ToString()</td>
+        </tr>
+        <tr>
+            <td>@ViewData["showdamietta"]</td>
+                <td>@ViewData["Damietta"].ToString()</td>
+        </tr>
+    </tbody>
+    
+</table>
